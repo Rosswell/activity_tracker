@@ -151,7 +151,7 @@ def exportSuccess(success, times=None):
 def resetTimers():
     def okPress(event=None):
         for timer in timerList:
-            timer.set('00:00.00')
+            timer.set('00:00:00')
         toplevel.destroy()
     def cancelPress():
         toplevel.destroy()
