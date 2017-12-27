@@ -29,23 +29,22 @@ task7Time = StringVar()
 task8Time = StringVar()
 task9Time = StringVar()
 task10Time = StringVar()
-task11Time = StringVar()
 
-# setting default values
+# setting default values to 00:00:00
 timerList = [task2Time, task3Time, task4Time, task5Time, task6Time,
-             task7Time, task8Time, task9Time, task10Time, task11Time]
+             task7Time, task8Time, task9Time, task10Time]
 for timer1 in timerList:
     timer1.set('00:00:00')
 timerDict = {k: v for k, v in zip(list(range(1, 11)), timerList)}
 
-
+# starts the timer
 def startTimer(dictKey):
     global timerVar
     if not afterId:
         timerVar = timerDict[dictKey]
         update_clock()
 
-
+# function for updating the timer on the app for visualization
 def update_clock():
     global timerVar
     global afterId
@@ -55,6 +54,7 @@ def update_clock():
     # afterId is for root.after_cancel(afterId) calls to cancel the after call
     afterId = root.after(1000, update_clock)
 
+# stops the timer
 def stopTimer():
     global afterId
     root.after_cancel(afterId)
@@ -65,69 +65,64 @@ ttk.Label(mainframe, text="Task").grid(column=1, row=1, sticky=(W, E))
 ttk.Label(mainframe, text="Total Time").grid(column=2, row=1)
 
 # row 2
-ttk.Label(mainframe, text="Hamilton Dev").grid(column=1, row=2, sticky=(W, E))
+ttk.Label(mainframe, text="LIMS Dev").grid(column=1, row=2, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task2Time).grid(column=2, row=2, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(1)).grid(column=3, row=2, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=2, sticky=(W, E))
 
 # row 3
-ttk.Label(mainframe, text="LIMS Dev").grid(column=1, row=3, sticky=(W, E))
+ttk.Label(mainframe, text="LIMS Support").grid(column=1, row=3, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task3Time).grid(column=2, row=3, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(2)).grid(column=3, row=3, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=3, sticky=(W, E))
 
 # row 4
-ttk.Label(mainframe, text="LIMS Support").grid(column=1, row=4, sticky=(W, E))
+ttk.Label(mainframe, text="Documentation").grid(column=1, row=4, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task4Time).grid(column=2, row=4, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(3)).grid(column=3, row=4, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=4, sticky=(W, E))
 
 # row 5
-ttk.Label(mainframe, text="Documentation").grid(column=1, row=5, sticky=(W, E))
+ttk.Label(mainframe, text="QA").grid(column=1, row=5, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task5Time).grid(column=2, row=5, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(4)).grid(column=3, row=5, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=5, sticky=(W, E))
 
 # row 6
-ttk.Label(mainframe, text="NFL Algorithm").grid(column=1, row=6, sticky=(W, E))
+ttk.Label(mainframe, text="PR Reviews").grid(column=1, row=6, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task6Time).grid(column=2, row=6, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(5)).grid(column=3, row=6, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=6, sticky=(W, E))
 
 # row 7
-ttk.Label(mainframe, text="PR reviews").grid(column=1, row=7, sticky=(W, E))
+ttk.Label(mainframe, text="Discussion (Slack/Email)").grid(column=1, row=7, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task7Time).grid(column=2, row=7, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(6)).grid(column=3, row=7, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=7, sticky=(W, E))
 
 # row 8
-ttk.Label(mainframe, text="Discussion (Slack/Email)").grid(column=1, row=8, sticky=(W, E))
+ttk.Label(mainframe, text="Meetings").grid(column=1, row=8, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task8Time).grid(column=2, row=8, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(7)).grid(column=3, row=8, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=8, sticky=(W, E))
 
 # row 9
-ttk.Label(mainframe, text="Meetings").grid(column=1, row=9, sticky=(W, E))
+ttk.Label(mainframe, text="HR").grid(column=1, row=9, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task9Time).grid(column=2, row=9, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(8)).grid(column=3, row=9, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=9, sticky=(W, E))
 
 # row 10
-ttk.Label(mainframe, text="HR").grid(column=1, row=10, sticky=(W, E))
+ttk.Label(mainframe, text="Learning").grid(column=1, row=10, sticky=(W, E))
 ttk.Label(mainframe, textvariable=task10Time).grid(column=2, row=10, sticky=(W, E))
 ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(9)).grid(column=3, row=10, sticky=(W, E))
 ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=10, sticky=(W, E))
 
-# row 11
-ttk.Label(mainframe, text="Misc Not work").grid(column=1, row=11, sticky=(W, E))
-ttk.Label(mainframe, textvariable=task11Time).grid(column=2, row=11, sticky=(W, E))
-ttk.Button(mainframe, text="Start Timer", command=lambda: startTimer(10)).grid(column=3, row=11, sticky=(W, E))
-ttk.Button(mainframe, text="Stop Timer", command=stopTimer).grid(column=4, row=11, sticky=(W, E))
-
+# exporting the times to a .csv file
 def export():
     now = datetime.now().strftime("%m/%d/%Y")
     times = [now, task2Time.get(), task3Time.get(), task4Time.get(), task5Time.get(), task6Time.get(),
-             task7Time.get(), task8Time.get(), task9Time.get(), task10Time.get(), task11Time.get()]
+             task7Time.get(), task8Time.get(), task9Time.get(), task10Time.get()]
     try:
         with open('/Users/ross/Documents/LIMS/activityTracker.csv', 'a', newline='\n') as csvFile:
             writer = csv.writer(csvFile, delimiter=',')
@@ -136,6 +131,7 @@ def export():
     except:
         exportSuccess(False, times)
 
+# dialog boxes for export success status
 def exportSuccess(success, times=None):
     toplevel = Toplevel()
     if success:
@@ -148,6 +144,7 @@ def exportSuccess(success, times=None):
     centerWindow(toplevel)
     toplevel.focus_force()
 
+# resetting all the timers to zero, with a confirmation dialog box
 def resetTimers():
     def okPress(event=None):
         for timer in timerList:
@@ -169,6 +166,7 @@ def resetTimers():
     centerWindow(toplevel)
     toplevel.focus_force()
 
+# calculates the center of the current screen and uses that for placement of the dialog box
 def centerWindow(window):
     root.update_idletasks()
     size = tuple(int(_) for _ in window.geometry().split('+')[0].split('x'))
@@ -186,7 +184,7 @@ def centerWindow(window):
 
     window.geometry("%dx%d+%d+%d" % (size + (x, y)))
 
-# non-timer functionality
+# other non-timer buttons
 ttk.Button(mainframe, text="Export", command=export).grid(column=4, row=1, sticky=(W, E))
 ttk.Button(mainframe, text="Clear Timers", command=resetTimers).grid(column=3, row=1, sticky=(W, E))
 
